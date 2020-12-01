@@ -10,16 +10,16 @@ for i in INPUT:
 def get():
     for i in range(len(nums)):
         for j in range(len(nums) - i - 1):
-            if nums[i] + nums[j] == 2020:
-                return nums[i] * nums[j]
+            if nums[i] + nums[i + j + 1] == 2020:
+                return nums[i] * nums[i + j + 1]
 
 print("part 1:", get())
 
 def getter():
     for i in range(len(nums)):
         for j in range(len(nums) - i - 1):
-            for k in range(len(nums) - i - j - 1):
-                if nums[i] + nums[j] + nums[k] == 2020:
-                    return nums[i] * nums[j] * nums[k]
+            for k in range(len(nums) - i - j - 2):
+                if nums[i] + nums[i + j + 1] + nums[i + j + k + 2] == 2020:
+                    return nums[i] * nums[i + j + 1] * nums[i + j + k + 2]
 
 print("part 2:", getter())
