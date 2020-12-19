@@ -25,11 +25,10 @@ regex1 = "(" + build("42").replace(" ", "") + ")"
 regex2 = "(" + build("31").replace(" ", "") + ")"
 
 def brute(i):
-    c = len(re.findall(regex1, i)) + 1
+    c = len(re.findall(regex1, i))
     for m in range(1, c):
-        for n in range(m + 1, c):
-            if re.fullmatch(regex1 + "{%d}" % n + regex2 + "{%d}" % m, i):
-                return True
+        if re.fullmatch(regex1 + "{%d,}" % (m + 1) + regex2 + "{%d}" % m, i):
+            return True
     return False
 
 print("part 2:", sum(brute(i) for i in messages))
